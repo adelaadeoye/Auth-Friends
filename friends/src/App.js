@@ -5,6 +5,8 @@ import Login from "./components/Login";
 import AddFriend from "./components/AddFriend";
 import FriendList from "./components/FriendList";
 import Navbar from "./components/NavBar";
+import PrivateRoute from "./components/PrivateRoute";
+
 function App() {
   return (
     <Router>
@@ -12,8 +14,9 @@ function App() {
         <Navbar />
         <Switch>
           
-          <Route  exact path="/friend" component={FriendList} />
-          <Route  path="/Addfriend" component={AddFriend} />
+          <PrivateRoute  exact path="/friendPage" component={FriendList} />
+          {/* <Route  exact path="/Addfriend" component={AddFriend} /> */}
+          <Route  exact path="/login" component={Login} />
           <Route  component={Login} />
         </Switch>
       </div>
