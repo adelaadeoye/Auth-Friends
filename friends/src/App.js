@@ -11,9 +11,10 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
+          
+          <Route  exact path="/friend" component={FriendList} />
+          <Route  path="/Addfriend" component={AddFriend} />
           <Route  component={Login} />
-          <Route exact path="/FriendList" component={FriendList} />
-          <Route exact path="/Addfriend" component={AddFriend} />
         </Switch>
       </div>
     </Router>
