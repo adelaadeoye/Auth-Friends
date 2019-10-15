@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {  Link } from "react-router-dom";
 
 import {
@@ -11,7 +11,7 @@ import {
   NavLink,
  } from 'reactstrap';
 
-const NavBar = (props) => {
+const NavBar = () => {
   
 
   return (
