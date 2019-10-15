@@ -1,25 +1,36 @@
-import React from 'react';
-import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import React from "react";
+import {  Row } from "reactstrap";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Friend from './Friend'
+class FriendList extends React.Component {
+  state = {
+    friends: []
+  };
+  componentDidMount() {
+    this.getData();
+  }
 
-const FriendList = (props) => {
-  return (
-    <Row>
-      <Col sm="6">
-        <Card body>
-          <CardTitle>Special Title Treatment</CardTitle>
-          <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-          <Button>Go somewhere</Button>
-        </Card>
-      </Col>
-      <Col sm="6">
-        <Card body>
-          <CardTitle>Special Title Treatment</CardTitle>
-          <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-          <Button>Go somewhere</Button>
-        </Card>
-      </Col>
-    </Row>
-  );
-};
+  getData = () => {
+    axiosWithAuth()
+      .get("/api/friends")
+      .then(res => {
+        console.log(res.data);
+        this.setState({ friends: res.data });
+      })
+      .catch(err => console.log(err.response));
+  };
+
+  render() {
+    return (<div>
+      <h2>Friends List Card</h2>
+      <Row>
+        {this.state.friends.map(friend=>(
+          <Friend key={friend.id} friend={friend}/>
+        ))}
+      </Row>
+      </div>
+    );
+  }
+}
 
 export default FriendList;
