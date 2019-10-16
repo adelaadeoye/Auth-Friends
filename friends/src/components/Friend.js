@@ -4,7 +4,6 @@ import { Card, Button, CardTitle, CardText, Col } from "reactstrap";
 
 const   Friend=(props)=>
 {
-    console.log("fr",props)
     return(
         <Col sm="6">
           <Card body>
