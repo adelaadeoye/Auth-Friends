@@ -6,6 +6,7 @@ const   Friend=(props)=>
 {
     return(
         <Col sm="6">
+          {console.log(props)}
           <Card body>
             <CardTitle>Name: {props.friend.name}</CardTitle>
             <CardText>
@@ -14,7 +15,7 @@ const   Friend=(props)=>
             <CardText>
               age: {props.friend.age}
             </CardText>
-            <Button>Delete</Button>
+            <Button onClick={()=>props.deleteFriend(props.friend.id)}>Delete</Button>
           </Card>
         </Col>
 

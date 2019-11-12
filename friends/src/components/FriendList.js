@@ -38,8 +38,19 @@ const FriendList = props => {
   const addFriend = e => {
     console.log("Here at add Fre",forms)
     e.preventDefault();
+    setForms({ name: "", email: "", age: "" })
     axiosWithAuth()
       .post(`/api/friends`, forms)
+      .then(res => {
+        console.log(res);
+        setFriends(res.data)
+      })
+      .catch(err => console.log(err.response));
+  };
+  const deleteFriend = id => {
+    console.log("id to delete",id)
+    axiosWithAuth()
+      .delete(`/api/friends/${id}`, forms)
       .then(res => {
         console.log(res);
         setFriends(res.data)
@@ -113,7 +124,7 @@ const FriendList = props => {
       </Button>
       <Row>
         {friends.map(friend => (
-          <Friend key={friend.id} friend={friend} />
+          <Friend key={friend.id} friend={friend} deleteFriend={deleteFriend}/>
         ))}
       </Row>
     </div>
